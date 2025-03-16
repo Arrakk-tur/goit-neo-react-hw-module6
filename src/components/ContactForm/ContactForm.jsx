@@ -1,31 +1,30 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { nanoid } from "nanoid";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
 import styles from "./ContactForm.module.css";
 
 const validationSchema = Yup.object({
   name: Yup.string()
-    .min(3, "Мінімум 3 символи")
-    .max(50, "Максимум 50 символів")
-    .required("Це поле є обов'язковим"),
+    .min(3, "Minimum 3 characters")
+    .max(50, "Maximum 50 characters")
+    .required("This field is required"),
   number: Yup.string()
-    .min(3, "Мінімум 3 символи")
-    .max(50, "Максимум 50 символів")
-    .required("Це поле є обов'язковим"),
+    .min(3, "Minimum 3 characters")
+    .max(50, "Maximum 50 characters")
+    .required("This field is required"),
 });
 
-const ContactForm = ({ onAddContact }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
+
   const initialValues = {
     name: "",
     number: "",
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    const newContact = {
-      id: `id-${nanoid(5)}`,
-      ...values,
-    };
-    onAddContact(newContact);
+    dispatch(addContact(values));
     resetForm();
   };
 
