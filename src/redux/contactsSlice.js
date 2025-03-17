@@ -32,7 +32,8 @@ const contactsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(REHYDRATE, (state, action) => {
       if (action.payload?.contacts?.items) {
-        // Adapt rehydrated entities to the entity adapter.
+        contactsAdapter.getSelectors.apply(state.items);
+        // contactsAdapter.removeAll(state.items);
         contactsAdapter.setAll(
           state.items,
           Object.values(action.payload.contacts.items.entities)
@@ -44,7 +45,6 @@ const contactsSlice = createSlice({
 
 export const { addContact, deleteContact } = contactsSlice.actions;
 
-// Corrected selectors
 export const { selectAll: selectContacts, selectById: selectContactById } =
   contactsAdapter.getSelectors((state) => state.contacts.items);
 

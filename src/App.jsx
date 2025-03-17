@@ -4,14 +4,11 @@ import ContactList from "./components/ContactList/ContactList";
 import ContactForm from "./components/ContactForm/ContactForm";
 import SearchBox from "./components/SearchBox/SearchBox";
 import "./App.css";
-// import { fetchContacts } from "./redux/contactsSlice";
 
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    // Here can be dispatch(fetchContacts()) to fetch contacts from API
-  }, [dispatch]);
+  useEffect(() => {}, [dispatch]);
 
   return (
     <div>

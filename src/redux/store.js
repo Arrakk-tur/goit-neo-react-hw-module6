@@ -9,14 +9,14 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import storage from "redux-persist/lib/storage";
 import contactsReducer from "./contactsSlice";
 import filtersReducer from "./filtersSlice";
 
 const contactsPersistConfig = {
   key: "contacts",
   storage,
-  whitelist: ["entities"], // only persist the 'items' state
+  whitelist: ["entities"],
 };
 
 const persistedContactsReducer = persistReducer(

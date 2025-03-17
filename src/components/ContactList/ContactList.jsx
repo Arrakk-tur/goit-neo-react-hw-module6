@@ -5,7 +5,6 @@ import { selectContacts } from "../../redux/contactsSlice";
 import { selectFilterName } from "../../redux/filtersSlice"; // Changed selector name
 import { createSelector } from "@reduxjs/toolkit";
 
-// Create a memoized selector
 const selectFilteredContacts = createSelector(
   [selectContacts, selectFilterName],
   (contacts, filter) => {
